@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Only this site's own files may load, and the page may connect nowhere else: video
+       and results stay on the phone, and library telemetry is blocked. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self' blob: data:; img-src 'self' blob: data:; media-src 'self' blob: mediastream:; worker-src 'self' blob:; style-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0b6e4f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Magic Touches</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1 data-t="title">Magic Touches</h1>
+      <div class="today">
+        <span data-t="today">Today</span>
+        <strong id="today-total"></strong>
+      </div>
+      <div class="meter"><div id="today-bar"></div></div>
+    </header>
+
+    <section id="live">
+      <div id="stage" class="stage">
+        <video id="cam" playsinline muted></video>
+        <canvas id="overlay"></canvas>
+        <div class="hud">
+          <div id="live-count" class="live-count">0</div>
+          <div id="live-goal" class="live-goal"></div>
+        </div>
+        <div class="chips">
+          <span id="chip-feet" class="chip" data-t="feetOk">feet</span>
+          <span id="chip-ball" class="chip" data-t="ballOk">ball</span>
+          <span id="chip-fps" class="chip"></span>
+        </div>
+        <div id="banner" class="banner" hidden></div>
+        <p id="stage-hint" class="stage-hint" data-t="liveHint"></p>
+      </div>
+      <div class="controls">
+        <label><span data-t="goalLabel">Goal</span>
+          <select id="goal">
+            <option>50</option><option selected>100</option><option>200</option>
+            <option>500</option><option>1000</option>
+          </select>
+        </label>
+        <label><input id="tick" type="checkbox" checked> <span data-t="tick"></span></label>
+        <label><input id="record" type="checkbox" checked> <span data-t="record"></span></label>
+      </div>
+      <button id="startstop" class="primary" data-t="start">Start</button>
+      <div id="live-result" class="card" hidden></div>
+    </section>
+
+    <section>
+      <p class="muted center" data-t="orFile"></p>
+      <input id="file" type="file" accept="video/*" hidden>
+      <label id="pick-label" for="file" class="secondary block" data-t="pick">Analyse a recorded video</label>
+    </section>
+
+    <section id="progress" hidden>
+      <div class="meter"><div id="progress-bar"></div></div>
+      <p id="status"></p>
+      <p class="muted" data-t="keepOpen"></p>
+      <button id="cancel" class="secondary" data-t="cancel">Cancel</button>
+    </section>
+
+    <section id="result" class="card" hidden></section>
+
+    <section>
+      <h2 data-t="sessions">Today's sessions</h2>
+      <ul id="sessions"></ul>
+    </section>
+
+    <section>
+      <h2 data-t="history">Last 7 days</h2>
+      <div id="history" class="history"></div>
+    </section>
+
+    <footer class="muted" data-t="privacy"></footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

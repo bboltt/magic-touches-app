@@ -1,0 +1,11 @@
+Magic Touches (3759077)
+Copyright (c) 2026 the Magic Touches authors. All rights reserved.
+
+This site includes third-party software:
+
+- MediaPipe Tasks Vision (@mediapipe/tasks-vision), licensed under the Apache-2.0
+  license: https://www.apache.org/licenses/LICENSE-2.0
+  https://github.com/google-ai-edge/mediapipe
+- MediaPipe Pose Landmarker (lite) and EfficientDet-Lite2 object detector models
+  (float16 and int8),
+  licensed under the Apache-2.0 license, from https://storage.googleapis.com/mediapipe-models/
